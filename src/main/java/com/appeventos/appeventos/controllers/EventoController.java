@@ -2,6 +2,7 @@ package com.appeventos.appeventos.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,7 +24,9 @@ public class EventoController {
 	@RequestMapping(value="/cadastrarEvento", method=RequestMethod.POST) //post pra quando for salvar no BD
 	public String form(Evento evento) {
 		er.save(evento);
-		return "redirect:/cadastrarEvento"; //apos salvar, vai redirecionar para o formulario
+		
+		//apos salvar, vai redirecionar para o formulario
+		return "redirect:/cadastrarEvento";
 	}
 	
 	@RequestMapping("/eventos")
@@ -39,8 +42,15 @@ public class EventoController {
 		// eh aquele definido na view, ${}		
 		mv.addObject("eventos", eventos);
 		
+		return mv;	
+	}
+	
+	@RequestMapping("/{codigo}") //retorna o codigo de cada evento
+	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
+		Evento evento = er.findByCodigo(codigo);
+		ModelAndView mv = new ModelAndView("detalhesEvento");
+		mv.addObject("evento", evento);
 		return mv;
 		
 	}
-
 }
