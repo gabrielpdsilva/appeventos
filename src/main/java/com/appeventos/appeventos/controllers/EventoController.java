@@ -48,7 +48,7 @@ public class EventoController {
 	@RequestMapping("/{codigo}") //retorna o codigo de cada evento
 	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
 		Evento evento = er.findByCodigo(codigo);
-		ModelAndView mv = new ModelAndView("detalhesEvento");
+		ModelAndView mv = new ModelAndView("eventos/detalhesEvento");
 		mv.addObject("evento", evento);
 		return mv;
 		
