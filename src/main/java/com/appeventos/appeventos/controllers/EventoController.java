@@ -51,6 +51,7 @@ public class EventoController {
 		ModelAndView mv = new ModelAndView("eventos/detalhesEvento");
 		mv.addObject("evento", evento);
 		return mv;
-		
 	}
+	
+	
 }

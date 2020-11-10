@@ -22,6 +22,13 @@
 			<p>Data: <span th:text="${evento.data}"></span></p>
 			<p>Horario: <span th:text="${evento.horario}"></span></p>
 		</div>
+		
+		<form method="post">
+			<p>Dados do candidato</p>
+			RG<input type="text" value="" name="rg"/>
+			Nome<input type="text" value="" name="nome"/>
+			<button class="waves-effect waves-light btn" type="submit">Enviar</button>
+		</form>
 	
 	</div>
 	
