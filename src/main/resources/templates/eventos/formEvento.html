@@ -13,12 +13,24 @@
 		<title>Cadastro de Eventos</title>
 	</head>
 	<body>
-		<form method="post">
+		<h1>Cadastrar Evento</h1>
+		<h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar eventos</a></h3>
+	
+		<form class="container" method="post">
 			Nome: <input type="text" value="" name="nome"/>
-			Local: <input type="text" value="" name="local"/>
-			Data: <input type="date" value="" name="data"/>
-			Horario: <input type="text" value="" name="horario"/>
-		<button type="submit">Cadastrar</button>
+			<div class="row">
+				<div class="input-field col s6">
+					Local: <input type="text" value="" name="local"/>
+				</div>
+				<div class="input-field col s3">
+					Data: <input type="date" value="" name="data"/>
+				</div>
+				<div class="input-field col s3">
+					Horario: <input type="text" value="" name="horario"/>
+				</div>
+			</div>
+		<button class="waves-effect waves-light btn" type="submit">Cadastrar</button>
+		
 		</form>
 		<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
    
