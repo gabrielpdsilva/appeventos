@@ -9,11 +9,11 @@
 
    	<!--Let browser know website is optimized for mobile-->
    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Detalhes</title>
+	<title>Detalhes do Evento</title>
 </head>
 <body>
 	<h1>Detalhes do Evento</h1>
-	<h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Lista de eventos</a></h3>
+	<h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Lista de eventos</a></h3>
 	
 	<div class="container" th:each="evento : ${evento}">
 		<div class="row">
@@ -24,9 +24,9 @@
 		</div>
 		
 		<form method="post">
-			<p>Dados do candidato</p>
-			RG<input type="text" value="" name="rg"/>
-			Nome<input type="text" value="" name="nome"/>
+			<p>Dados do convidado</p>
+			CPF<input type="text" value="" name="cpfConvidado"/>
+			Nome<input type="text" value="" name="nomeConvidado"/>
 			<button class="waves-effect waves-light btn" type="submit">Enviar</button>
 		</form>
 	

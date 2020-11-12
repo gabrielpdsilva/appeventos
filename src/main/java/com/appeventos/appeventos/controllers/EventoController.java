@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.appeventos.appeventos.models.Convidado;
 import com.appeventos.appeventos.models.Evento;
+import com.appeventos.appeventos.repository.IConvidadoRepository;
 import com.appeventos.appeventos.repository.IEventoRepository;
 
 @Controller
@@ -15,6 +17,9 @@ public class EventoController {
 	
 	@Autowired
 	private IEventoRepository er;
+	
+	@Autowired
+	private IConvidadoRepository cr;
 	
 	@RequestMapping(value="/cadastrarEvento", method=RequestMethod.GET) //get, vai retornar o formulario
 	public String form() {
@@ -43,6 +48,22 @@ public class EventoController {
 		mv.addObject("eventos", eventos);
 		
 		return mv;	
+	}
+	
+	@RequestMapping(value="/{codigo}", method=RequestMethod.GET) //retorna o codigo de cada evento
+	public ModelAndView detalhesEventoTESTE1(@PathVariable("codigo") long codigo) {
+		Evento evento = er.findByCodigo(codigo);
+		ModelAndView mv = new ModelAndView("eventos/detalhesEvento");
+		mv.addObject("evento", evento);
+		return mv;
+	}
+	
+	@RequestMapping(value="/{codigo}", method=RequestMethod.POST) //retorna o codigo de cada evento
+	public String detalhesEventoTESTE2(@PathVariable("codigo") long codigo, Convidado convidado) {
+		Evento evento = er.findByCodigo(codigo);
+		convidado.setEvento(evento);
+		cr.save(convidado);
+		return "redirect:/{codigo}";
 	}
 	
 	@RequestMapping("/{codigo}") //retorna o codigo de cada evento
