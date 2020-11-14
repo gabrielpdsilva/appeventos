@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="convidados")
@@ -19,7 +20,10 @@ public class Convidado implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long codigoConvidado;
 	
+	@NotEmpty
 	private String cpfConvidado;
+	
+	@NotEmpty
 	private String nomeConvidado;
 	
 	// muitos convidados

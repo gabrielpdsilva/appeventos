@@ -23,6 +23,9 @@
 			<p>Horario: <span th:text="${evento.horario}"></span></p>
 		</div>
 		
+		<!-- mensagem, tanto de erro quanto sucesso na hora de validar o candidato -->
+		<th:block th:include="mensagemValidacao"></th:block>
+		
 		<form method="post">
 			<p>Dados do convidado</p>
 			CPF<input type="text" value="" name="cpfConvidado"/>
