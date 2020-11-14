@@ -51,27 +51,21 @@ public class EventoController {
 	}
 	
 	@RequestMapping(value="/{codigo}", method=RequestMethod.GET) //retorna o codigo de cada evento
-	public ModelAndView detalhesEventoTESTE1(@PathVariable("codigo") long codigo) {
-		Evento evento = er.findByCodigo(codigo);
-		ModelAndView mv = new ModelAndView("eventos/detalhesEvento");
-		mv.addObject("evento", evento);
-		return mv;
-	}
-	
-	@RequestMapping(value="/{codigo}", method=RequestMethod.POST) //retorna o codigo de cada evento
-	public String detalhesEventoTESTE2(@PathVariable("codigo") long codigo, Convidado convidado) {
-		Evento evento = er.findByCodigo(codigo);
-		convidado.setEvento(evento);
-		cr.save(convidado);
-		return "redirect:/{codigo}";
-	}
-	
-	@RequestMapping("/{codigo}") //retorna o codigo de cada evento
 	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
 		Evento evento = er.findByCodigo(codigo);
 		ModelAndView mv = new ModelAndView("eventos/detalhesEvento");
 		mv.addObject("evento", evento);
+		Iterable<Convidado> convidados = cr.findByEvento(evento);
+		mv.addObject("convidados", convidados);
 		return mv;
+	}
+	
+	@RequestMapping(value="/{codigo}", method=RequestMethod.POST) //retorna o codigo de cada evento
+	public String detalhesEventoPost(@PathVariable("codigo") long codigo, Convidado convidado) {
+		Evento evento = er.findByCodigo(codigo);
+		convidado.setEvento(evento);
+		cr.save(convidado);
+		return "redirect:/{codigo}";
 	}
 	
 	
