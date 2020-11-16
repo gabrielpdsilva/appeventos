@@ -43,16 +43,22 @@
 	
 	</div>
 	<h5>Lista de convidados:</h5>
-	<div class="container" th:each="convidado: ${convidados}">
-		<div class="row">
-			<div class="input-field col s6">
-				<p><span th:text="${convidado.cpfConvidado}"></span></p>
-			</div>
-			<div class="input-field col s3">
-				<p><span th:text="${convidado.nomeConvidado}"></span></p>
-			</div>
-		</div>				
-	</div>
+	
+	
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>CPF</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr th:each="convidado: ${convidados}">
+				<td><span th:text="${convidado.nomeConvidado}"></span>
+				<td><span th:text="${convidado.cpfConvidado}"></span>		
+			</tr>
+		</tbody>
+	</table>
 	
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
