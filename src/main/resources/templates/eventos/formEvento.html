@@ -13,9 +13,16 @@
 		<title>Cadastro de Eventos</title>
 	</head>
 	<body>
-		<h1>Cadastrar Evento</h1>
-		<h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar eventos</a></h3>
-		
+		<header>
+		  <nav>
+		    <div class="nav-wrapper">
+		      <a href="#" class="brand-logo">Cadastrar Evento</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar eventos</a></li>
+		      </ul>
+		    </div>
+		  </nav>
+		</header>
 		<th:block th:include="mensagemValidacao"></th:block>
 	
 		<form class="container" method="post">
