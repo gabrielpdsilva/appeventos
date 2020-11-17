@@ -3,6 +3,7 @@ package com.appeventos.appeventos.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,8 +33,11 @@ public class Evento implements Serializable {
 
 	@NotEmpty
 	private String horario;
-	
-	@OneToMany
+
+	// necessario adicionar essa notacao, caso
+	// contrario na hora de deleter um evento
+	// havera um erro por causa das constraints
+	@OneToMany(mappedBy="evento", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Convidado> convidados;
 	
 	public long getCodigo() {
