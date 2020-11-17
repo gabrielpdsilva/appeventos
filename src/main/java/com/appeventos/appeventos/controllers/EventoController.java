@@ -70,11 +70,21 @@ public class EventoController {
 		return mv;
 	}
 	
-	@RequestMapping("/deletar")
+	@RequestMapping("/deletarEvento")
 	public String deletarEvento(long codigo) {
 		Evento evento = er.findByCodigo(codigo);
 		er.delete(evento);
 		return "redirect:/eventos";
+	}
+	
+	@RequestMapping("/deletarConvidado")
+	public String deletarConvidado(long codigoConvidado) {
+		Convidado convidado = cr.findByCodigoConvidado(codigoConvidado);
+		cr.delete(convidado);
+		Evento evento = convidado.getEvento();
+		long codigoEvento = evento.getCodigo();
+		String codigo = "" + codigoEvento;
+		return "redirect:/" + codigo;
 	}
 	
 	@RequestMapping(value="/{codigo}", method=RequestMethod.POST) //retorna o codigo de cada evento
