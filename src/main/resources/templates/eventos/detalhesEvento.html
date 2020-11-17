@@ -10,6 +10,7 @@
    	<!--Let browser know website is optimized for mobile-->
    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Detalhes do Evento</title>
+	<link rel="stylesheet" href="style/styleCss.css"/>
 </head>
 <body>
 	<header>
@@ -23,7 +24,8 @@
 	  </nav>
 	</header>
 
-	<div class="container" th:each="evento : ${evento}">
+	<div th:each="evento : ${evento}" class="container detalhesEvento">
+		<h5>Detalhes do Evento</h5>
 		<div class="row">
 			<p>Nome: <span th:text="${evento.nome}"></span></p>
 			<p>Local: <span th:text="${evento.local}"></span></p>
@@ -31,21 +33,21 @@
 			<p>Horario: <span th:text="${evento.horario}"></span></p>
 		</div>
 		
-		<!-- mensagem, tanto de erro quanto sucesso na hora de validar o candidato -->
-		<th:block th:include="mensagemValidacao"></th:block>
+	</div>
 		
+	<!-- mensagem, tanto de erro quanto sucesso na hora de validar o candidato -->
+	<th:block th:include="mensagemValidacao"></th:block>
+	
+	<div class="container formConvidado">
 		<form method="post">
 			<p>Dados do convidado</p>
 			CPF<input type="text" value="" name="cpfConvidado"/>
 			Nome<input type="text" value="" name="nomeConvidado"/>
 			<button class="waves-effect waves-light btn" type="submit">Enviar</button>
 		</form>
-	
 	</div>
-	<h5>Lista de convidados:</h5>
 	
-	
-	<table class="container">
+	<table class="container tabelaConvidado">
 		<thead>
 			<tr>
 				<th>Nome</th>
