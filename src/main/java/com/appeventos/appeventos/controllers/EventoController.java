@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -16,7 +17,8 @@ import com.appeventos.appeventos.models.Evento;
 import com.appeventos.appeventos.repository.IConvidadoRepository;
 import com.appeventos.appeventos.repository.IEventoRepository;
 
-@Controller
+//@Controller
+@RestController
 public class EventoController {
 	
 	@Autowired
