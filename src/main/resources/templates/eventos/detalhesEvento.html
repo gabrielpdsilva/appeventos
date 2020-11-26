@@ -14,11 +14,11 @@
 </head>
 <body>
 	<header>
-	  <nav>
+	  <nav class="menu">
 	    <div class="nav-wrapper">
 	      <a href="#" class="brand-logo">Detalhes do Evento</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Lista de eventos</a></li>
+	        <li><a href="/eventos" class="btn estiloBotao"><i class="material-icons left">list</i>Lista de eventos</a></li>
 	      </ul>
 	    </div>
 	  </nav>
@@ -43,7 +43,7 @@
 			<p>Dados do convidado</p>
 			CPF<input type="text" value="" name="cpfConvidado"/>
 			Nome<input type="text" value="" name="nomeConvidado"/>
-			<button class="waves-effect waves-light btn" type="submit">Enviar</button>
+			<button class="btn estiloBotao" type="submit">Enviar</button>
 		</form>
 	</div>
 	
@@ -59,7 +59,7 @@
 			<tr th:each="convidado: ${convidados}">
 				<td><span th:text="${convidado.nomeConvidado}"></span></td>
 				<td><span th:text="${convidado.cpfConvidado}"></span></td>
-					<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.codigoConvidado)).build()}"><i class="material-icons left">delete</i></a></td>
+					<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.codigoConvidado)).build()}"><i class="material-icons left">delete</i></a></td>
 			
 			</tr>
 		</tbody>

@@ -1,4 +1,6 @@
 .detalhesEvento {
+	background-color: white;
+	margin-top: 20px;
 	box-shadow: 0px 0px 5px grey;
 	padding-top: 20px;
 	padding-left: 20px;
@@ -6,6 +8,7 @@
 }
 
 .formConvidado {
+	background-color: white;
 	box-shadow: 0px 0px 5px grey;
 	padding-top: 20px;
 	padding-left: 20px;
@@ -18,9 +21,27 @@
 }
 
 .formEvento {
+	background-color: white;
+	margin-top: 20px;
 	box-shadow: 0px 0px 5px grey;
 	padding-top: 20px;
 	padding-left: 20px;
 	padding-bottom: 10px;
 	margin-bottom: 60px;
+}
+
+.mensagemDeValidacao {
+	text-align: center;
+}
+
+.menu {
+	background-color: #8645ff;
+}
+
+.estiloBotao {
+	background-color: #00cc7a;
+}
+
+body {
+	background-color: #f0f0f0;
 }

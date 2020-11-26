@@ -14,11 +14,11 @@
 </head>
 <body>
 	<header>
-	  <nav>
+	  <nav class="menu">
 	    <div class="nav-wrapper">
 	      <a href="#" class="brand-logo">Lista de Eventos</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <li><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Cadastrar evento</a></li>
+	        <li><a href="/cadastrarEvento" class="estiloBotao btn"><i class="material-icons left">add</i>Cadastrar evento</a></li>
 	      </ul>
 	    </div>
 	  </nav>
@@ -40,7 +40,7 @@
 				<td><span th:text="${evento.local}"></span></td>
 				<td><span th:text="${evento.data}"></span></td>
 				<td><span th:text="${evento.horario}"></span></td>
-				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"><i class="material-icons left">delete</i></a></td>
+				<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
 		</tbody>
 	</table>

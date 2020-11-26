@@ -4,11 +4,14 @@
 		xmlns:th="http://thymeleaf.org">
 
 <head>
+<link rel="stylesheet" href="styleCss.css">
 </head>
 
 <body>
+<div class="mensagemDeValidacao">
 	<div class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
 		<span th:text="${mensagem}"></span>
 	</div>
+</div>
 </body>
 </html>
