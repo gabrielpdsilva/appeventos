@@ -16,7 +16,7 @@
 	<header>
 	  <nav class="menu">
 	    <div class="nav-wrapper">
-	      <a href="#" class="brand-logo">Detalhes do Evento</a>
+	      <a href="." class="brand-logo tituloNav">Detalhes do Evento</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
 	        <li><a href="/eventos" class="btn estiloBotao"><i class="material-icons left">list</i>Lista de eventos</a></li>
 	      </ul>
@@ -59,8 +59,7 @@
 			<tr th:each="convidado: ${convidados}">
 				<td><span th:text="${convidado.nomeConvidado}"></span></td>
 				<td><span th:text="${convidado.cpfConvidado}"></span></td>
-					<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.codigoConvidado)).build()}"><i class="material-icons left">delete</i></a></td>
-			
+				<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.codigoConvidado)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
 		</tbody>
 	</table>

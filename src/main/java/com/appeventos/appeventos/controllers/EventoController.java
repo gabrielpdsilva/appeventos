@@ -48,7 +48,7 @@ public class EventoController {
 	public ModelAndView listarEventos() {
 		
 		// passamos qual pagina ele vai renderizar de acordo com os dados do evento
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("eventos");
 		
 		// lista de eventos
 		Iterable<Evento> eventos = er.findAll();
