@@ -77,16 +77,7 @@ public class EventoController {
 		return "redirect:/eventos";
 	}
 	
-	@RequestMapping("/deletarConvidado")
-	public String deletarConvidado(long codigoConvidado) {
-		Convidado convidado = cr.findByCodigoConvidado(codigoConvidado);
-		cr.delete(convidado);
-		Evento evento = convidado.getEvento();
-		long codigoEvento = evento.getCodigo();
-		String codigo = "" + codigoEvento;
-		return "redirect:/" + codigo;
-	}
-	
+
 	@RequestMapping(value="/{codigo}", method=RequestMethod.POST) //retorna o codigo de cada evento
 	public String detalhesEventoPost(@PathVariable("codigo") long codigo, @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
 		

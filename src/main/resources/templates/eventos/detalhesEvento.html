@@ -59,7 +59,7 @@
 			<tr th:each="convidado: ${convidados}">
 				<td><span th:text="${convidado.nomeConvidado}"></span></td>
 				<td><span th:text="${convidado.cpfConvidado}"></span></td>
-				<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.codigoConvidado)).build()}"><i class="material-icons left">delete</i></a></td>
+				<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('CC#deletarConvidado').arg(0, convidado.codigoConvidado)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
 		</tbody>
 	</table>
