@@ -25,12 +25,12 @@ public class EventoController {
 	@Autowired
 	private IConvidadoRepository cr;
 	
-	@RequestMapping(value="/cadastrarEvento", method=RequestMethod.GET) //get, vai retornar o formulario
+	@RequestMapping(value="/cadastrar-novo-evento", method=RequestMethod.GET) //get, vai retornar o formulario
 	public String form() {
-		return "eventos/formEvento";
+		return "eventos/cadastrar-evento";
 	}
 	
-	@RequestMapping(value="/cadastrarEvento", method=RequestMethod.POST) //post pra quando for salvar no BD
+	@RequestMapping(value="/cadastrar-novo-evento", method=RequestMethod.POST) //post pra quando for salvar no BD
 	public String form(@Valid Evento evento, BindingResult result, RedirectAttributes attributes) {
 		
 		if(result.hasErrors()) {
@@ -41,14 +41,14 @@ public class EventoController {
 		attributes.addFlashAttribute("mensagem", "Evento adicionado!");
 		
 		//apos salvar, vai redirecionar para o formulario
-		return "redirect:/cadastrarEvento";
+		return "redirect:/cadastrar-novo-evento";
 	}
 	
-	@RequestMapping("/eventos")
+	@RequestMapping("/lista-de-eventos")
 	public ModelAndView listarEventos() {
 		
 		// passamos qual pagina ele vai renderizar de acordo com os dados do evento
-		ModelAndView mv = new ModelAndView("eventos");
+		ModelAndView mv = new ModelAndView("eventos/lista-de-eventos");
 		
 		// lista de eventos
 		Iterable<Evento> eventos = er.findAll();
@@ -63,7 +63,7 @@ public class EventoController {
 	@RequestMapping(value="/{codigo}", method=RequestMethod.GET) //retorna o codigo de cada evento
 	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
 		Evento evento = er.findByCodigo(codigo);
-		ModelAndView mv = new ModelAndView("eventos/detalhesEvento");
+		ModelAndView mv = new ModelAndView("eventos/detalhes-evento");
 		mv.addObject("evento", evento);
 		Iterable<Convidado> convidados = cr.findByEvento(evento);
 		mv.addObject("convidados", convidados);
@@ -74,7 +74,7 @@ public class EventoController {
 	public String deletarEvento(long codigo) {
 		Evento evento = er.findByCodigo(codigo);
 		er.delete(evento);
-		return "redirect:/eventos";
+		return "redirect:/lista-de-eventos";
 	}
 	
 
