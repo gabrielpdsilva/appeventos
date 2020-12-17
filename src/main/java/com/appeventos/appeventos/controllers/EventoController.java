@@ -40,7 +40,7 @@ public class EventoController {
 		
 		if(result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos.");
-			return "redirect:/cadastrarEvento";
+			return "redirect:/cadastrar-novo-evento";
 		}
 		er.save(evento);
 		attributes.addFlashAttribute("mensagem", "Evento adicionado!");
