@@ -13,8 +13,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.appeventos.appeventos.models.Convidado;
 import com.appeventos.appeventos.models.Evento;
+import com.appeventos.appeventos.models.Usuario;
 import com.appeventos.appeventos.repository.IConvidadoRepository;
 import com.appeventos.appeventos.repository.IEventoRepository;
+import com.appeventos.appeventos.repository.IUsuarioRepository;
 
 @Controller
 public class EventoController {
@@ -24,6 +26,9 @@ public class EventoController {
 	
 	@Autowired
 	private IConvidadoRepository cr;
+	
+	@Autowired
+	private IUsuarioRepository ur;
 	
 	@RequestMapping(value="/cadastrar-novo-evento", method=RequestMethod.GET) //get, vai retornar o formulario
 	public String form() {
@@ -96,6 +101,25 @@ public class EventoController {
 		attributes.addFlashAttribute("mensagem", "Convidado adicionado!");
 		return "redirect:/{codigo}";	
 		
+	}
+	
+	@RequestMapping(value="/cadastrar-novo-usuario", method=RequestMethod.GET) //get, vai retornar o formulario
+	public String formUsuario() {
+		return "/cadastrar-usuario";
+	}
+	
+	@RequestMapping(value="/cadastrar-novo-usuario", method=RequestMethod.POST) //post pra quando for salvar no BD
+	public String formUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
+		
+		if(result.hasErrors()) {
+			//attributes.addFlashAttribute("mensagem", "Verifique os campos.");
+			return "redirect:/cadastrar-novo-usuario";
+		}
+		ur.save(usuario);
+		//attributes.addFlashAttribute("mensagem", "Evento adicionado!");
+		
+		//apos salvar, vai redirecionar para o formulario
+		return "redirect:/cadastrar-novo-usuario";
 	}
 	
 	

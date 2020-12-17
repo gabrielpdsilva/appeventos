@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html 	xlmns:th="http://thymeleaf.org"
+		xlmns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<!--Import Google Icon Font-->
+      	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      	<!--Import materialize.css-->
+      	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      	<!--Let browser know website is optimized for mobile-->
+     	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+		<title>Cadastro de Usuario</title>
+		<link rel="stylesheet" href="style/styleCss.css"/>
+	</head>
+	<body>
+		<header>
+		  <nav class="menu">
+		    <div class="nav-wrapper">
+		      <a href="." class="brand-logo tituloNav">Cadastrar Usuario</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="/lista-de-eventos" class="estiloBotao btn"><i class="material-icons left">list</i>Listar eventos</a></li>
+		      </ul>
+		    </div>
+		  </nav>
+		</header>
+	
+		<div class="container formEvento">
+			<form class="container" method="post">
+			
+				Nome: <input type="text" value="" name="nomeUsuario"/>
+				E-mail: <input type="text" value="" name="email"/>
+				Senha: <input type="password" value="" name="senha"/>
+				
+				<button class="estiloBotao btn" type="submit">Cadastrar Usuario</button>
+			
+			</form>
+		</div>
+		<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+   
+	</body>
+</html>

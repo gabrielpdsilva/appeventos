@@ -13,12 +13,15 @@ import javax.validation.constraints.NotEmpty;
 @Table(name="usuarios")
 public class Usuario implements Serializable {
 	
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long codigoUsuario;
 	
+	@NotEmpty
+	private String nomeUsuario;
+
 	@NotEmpty
 	private String email;
 	
@@ -31,6 +34,14 @@ private static final long serialVersionUID = 1L;
 
 	public void setCodigoUsuario(long codigoUsuario) {
 		this.codigoUsuario = codigoUsuario;
+	}
+	
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
 	public String getEmail() {
