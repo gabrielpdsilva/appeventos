@@ -3,6 +3,7 @@ package com.appeventos.appeventos.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,9 +27,6 @@ public class EventoController {
 	
 	@Autowired
 	private IConvidadoRepository cr;
-	
-	@Autowired
-	private IUsuarioRepository ur;
 	
 	@RequestMapping(value="/cadastrar-novo-evento", method=RequestMethod.GET) //get, vai retornar o formulario
 	public String form() {
@@ -102,25 +100,5 @@ public class EventoController {
 		return "redirect:/{codigo}";	
 		
 	}
-	
-	@RequestMapping(value="/cadastrar-novo-usuario", method=RequestMethod.GET) //get, vai retornar o formulario
-	public String formUsuario() {
-		return "/cadastrar-usuario";
-	}
-	
-	@RequestMapping(value="/cadastrar-novo-usuario", method=RequestMethod.POST) //post pra quando for salvar no BD
-	public String formUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
-		
-		if(result.hasErrors()) {
-			//attributes.addFlashAttribute("mensagem", "Verifique os campos.");
-			return "redirect:/cadastrar-novo-usuario";
-		}
-		ur.save(usuario);
-		//attributes.addFlashAttribute("mensagem", "Evento adicionado!");
-		
-		//apos salvar, vai redirecionar para o formulario
-		return "redirect:/cadastrar-novo-usuario";
-	}
-	
 	
 }

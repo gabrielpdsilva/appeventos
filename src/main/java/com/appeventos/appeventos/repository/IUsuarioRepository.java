@@ -5,6 +5,6 @@ import com.appeventos.appeventos.models.Usuario;
 
 public interface IUsuarioRepository extends CrudRepository<Usuario, String> {
 	
-	Usuario findByCodigoUsuario(long codigoUsuario);
+	Usuario findByLogin(String login);
 
 }
