@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--Import Google Icon Font-->
+   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+   	<!--Import materialize.css-->
+   	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+   	<!--Let browser know website is optimized for mobile-->
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Login</title>
+	<link rel="stylesheet" href="style/styleCss.css"/>
+</head>
+<body>
+	<header>
+	  <nav class="menu">
+	    <div class="nav-wrapper">
+	      <a href="." class="brand-logo tituloNav">Login</a>
+	    </div>
+	  </nav>
+	</header>
+	<div class="tabelaLogin">
+	<p>Realize login para continuar.</p>
+		<form class="container" name='login' action="/login" method="post">
+			Usuario: <input type="text" value="" name="username"/>
+			Senha: <input type="password" value="" name="password"/>
+			<button class="estiloBotao btn" type="submit">Realizar Login</button>
+		</form>
+	</div>
+</body>
+</html>

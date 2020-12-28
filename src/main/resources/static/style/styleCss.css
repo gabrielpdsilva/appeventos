@@ -58,6 +58,14 @@ body {
 	margin-right: 50px;
 }
 
+.tabelaLogin {
+	background-color: white;
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
 .tituloNav {
 	margin-left: 15px;
 	font-weight: bold;
