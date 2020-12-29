@@ -37,6 +37,10 @@ public class EventoController {
 	public String form(@Valid Evento evento, BindingResult result, RedirectAttributes attributes) {
 		
 		if(result.hasErrors()) {
+			System.out.println(result.getErrorCount());
+			System.out.println(result.getFieldErrorCount());
+			System.out.println(result.hasErrors());
+			
 			attributes.addFlashAttribute("mensagem", "Verifique os campos.");
 			return "redirect:/cadastrar-novo-evento";
 		}
