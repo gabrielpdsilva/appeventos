@@ -65,7 +65,7 @@ public class EventoController {
 	
 	@RequestMapping(value="/{codigo}", method=RequestMethod.GET) //retorna o codigo de cada evento
 	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
-		Evento evento = er.findByCodigo(codigo);
+		Evento evento = er.findByCodigoEvento(codigo);
 		ModelAndView mv = new ModelAndView("eventos/detalhes-evento");
 		mv.addObject("evento", evento);
 		Iterable<Convidado> convidados = cr.findByEvento(evento);
@@ -75,7 +75,7 @@ public class EventoController {
 	
 	@RequestMapping("/deletarEvento")
 	public String deletarEvento(long codigo) {
-		Evento evento = er.findByCodigo(codigo);
+		Evento evento = er.findByCodigoEvento(codigo);
 		er.delete(evento);
 		return "redirect:/lista-de-eventos";
 	}
@@ -93,7 +93,7 @@ public class EventoController {
 			return "redirect:/{codigo}";
 		}
 			
-		Evento evento = er.findByCodigo(codigo);
+		Evento evento = er.findByCodigoEvento(codigo);
 		convidado.setEvento(evento);
 		cr.save(convidado);
 		attributes.addFlashAttribute("mensagem", "Convidado adicionado!");

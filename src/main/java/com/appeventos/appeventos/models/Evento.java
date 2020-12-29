@@ -20,54 +20,73 @@ public class Evento implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long codigo;
+	private long codigoEvento;
 	
 	@NotEmpty
-	private String nome;
+	private String nomeEvento;
 	
 	@NotEmpty
-	private String local;
+	private String localEvento;
 
 	@NotEmpty
-	private String data;
+	private String dataEvento;
 
 	@NotEmpty
-	private String horario;
+	private String horarioEvento;
 
 	// necessario adicionar essa notacao, caso
 	// contrario na hora de deleter um evento
 	// havera um erro por causa das constraints
 	@OneToMany(mappedBy="evento", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Convidado> convidados;
+
+	public long getCodigoEvento() {
+		return codigoEvento;
+	}
+
+	public void setCodigoEvento(long codigoEvento) {
+		this.codigoEvento = codigoEvento;
+	}
+
+	public String getNomeEvento() {
+		return nomeEvento;
+	}
+
+	public void setNomeEvento(String nomeEvento) {
+		this.nomeEvento = nomeEvento;
+	}
+
+	public String getLocalEvento() {
+		return localEvento;
+	}
+
+	public void setLocalEvento(String localEvento) {
+		this.localEvento = localEvento;
+	}
+
+	public String getDataEvento() {
+		return dataEvento;
+	}
+
+	public void setDataEvento(String dataEvento) {
+		this.dataEvento = dataEvento;
+	}
+
+	public String getHorarioEvento() {
+		return horarioEvento;
+	}
+
+	public void setHorarioEvento(String horarioEvento) {
+		this.horarioEvento = horarioEvento;
+	}
+
+	public List<Convidado> getConvidados() {
+		return convidados;
+	}
+
+	public void setConvidados(List<Convidado> convidados) {
+		this.convidados = convidados;
+	}
 	
-	public long getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getLocal() {
-		return local;
-	}
-	public void setLocal(String local) {
-		this.local = local;
-	}
-	public String getData() {
-		return data;
-	}
-	public void setData(String data) {
-		this.data = data;
-	}
-	public String getHorario() {
-		return horario;
-	}
-	public void setHorario(String horario) {
-		this.horario = horario;
-	}
+	
 }

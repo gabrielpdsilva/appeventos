@@ -28,14 +28,20 @@ public class UsuarioController {
 	public String formUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
 		
 		if(result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos.");
+			attributes.addFlashAttribute("mensagem", "Todos os campos devem ser preenchidos.");
 			return "redirect:/cadastrar-novo-usuario";
 		}
+		
+		if(usuario.getSenha().length() < 6) {
+			attributes.addFlashAttribute("mensagem", "A senha deve ter pelo menos 6 caracteres.");
+			return "redirect:/cadastrar-novo-usuario";
+		}
+		
 		String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
 		usuario.setSenha(senhaCriptografada);
 		ur.save(usuario);
 		attributes.addFlashAttribute("mensagem", "Usuario adicionado!");
-		return "redirect:/cadastrar-novo-usuario";
+		return "redirect:/";
 	}
 
 }

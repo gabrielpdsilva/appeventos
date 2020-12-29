@@ -19,7 +19,7 @@ public class ConvidadoController {
 		Convidado convidado = cr.findByCodigoConvidado(codigoConvidado);
 		cr.delete(convidado);
 		Evento evento = convidado.getEvento();
-		long codigoEvento = evento.getCodigo();
+		long codigoEvento = evento.getCodigoEvento();
 		String codigo = "" + codigoEvento;
 		return "redirect:/" + codigo;
 	}

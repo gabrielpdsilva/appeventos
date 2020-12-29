@@ -36,6 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 			.logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+		
+		// site util:
+		// https://www.baeldung.com/spring-security-login
 	}
 
 	@Override
