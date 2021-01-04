@@ -16,6 +16,12 @@
 	margin-bottom: 60px;
 }
 
+.erro {
+	margin: auto;
+  	width: 50%;
+  	color: red;
+}
+
 .tabelaConvidado {
 	width: 50%;
 }

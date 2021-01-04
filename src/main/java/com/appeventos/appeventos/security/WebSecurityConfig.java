@@ -30,13 +30,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 			.formLogin()
 			.loginPage("/login")
+			.failureUrl("/login-error")
 			.permitAll()
 		.and()
 			.logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 		
-		// site util:
+		// sites uteis:
 		// https://www.baeldung.com/spring-security-login
+		// https://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#simple-conditionals-if-and-unless
 	}
 
 	@Override

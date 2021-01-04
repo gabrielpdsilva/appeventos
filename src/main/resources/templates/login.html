@@ -15,6 +15,7 @@
 	<div class="tabelaLogin">
 		<h5>Login</h5>
 		<p>Realize login para continuar.</p>
+		<p th:if="${loginError}" class="erro">Login ou senha incorreto.</p>
 		<form class="container" name='login' action="/login" method="post">
 			Usuario <input type="text" value="" name="username"/>
 			Senha <input type="password" value="" name="password"/>
