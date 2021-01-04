@@ -3,6 +3,7 @@ package com.appeventos.appeventos.security;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,7 +24,7 @@ public class ImplementsUserDetailsService implements UserDetailsService {
 		Usuario usuario = ur.findByLogin(login);
 		if(usuario == null)
 			throw new UsernameNotFoundException("Usuário não encontrado.");
-		return usuario;
+		return new User(usuario.getUsername(), usuario.getPassword(), true, true, true, true, usuario.getAuthorities());
 	}
 
 }
