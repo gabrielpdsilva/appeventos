@@ -1,10 +1,14 @@
 package com.appeventos.appeventos.models;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -26,6 +30,25 @@ public class Usuario implements UserDetails {
 	@NotEmpty
 	@Column(name = "senha")
 	private String senha;
+	
+	// fazendo uma tabela que
+	// possui tanto o ID do
+	// usuario quanto o ID do
+	// role
+	@ManyToMany
+	@JoinTable(name="usuarios_roles", joinColumns = @JoinColumn(
+		name = "usuario_id", referencedColumnName = "login"),
+		inverseJoinColumns = @JoinColumn(
+		name = "role_id", referencedColumnName = "nome_role"))
+	private List<Role> roles;
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 
 	public String getLogin() {
 		return login;

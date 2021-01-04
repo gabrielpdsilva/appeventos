@@ -1,5 +1,7 @@
 package com.appeventos.appeventos.security;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,6 +12,7 @@ import com.appeventos.appeventos.models.Usuario;
 import com.appeventos.appeventos.repository.IUsuarioRepository;
 
 @Repository
+@Transactional
 public class ImplementsUserDetailsService implements UserDetailsService {
 	
 	@Autowired
