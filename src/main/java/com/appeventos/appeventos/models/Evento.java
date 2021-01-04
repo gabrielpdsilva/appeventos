@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,22 +21,27 @@ public class Evento implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "codigo_evento")
 	private long codigoEvento;
 	
 	@NotEmpty
+	@Column(name = "nome_evento")
 	private String nomeEvento;
 	
 	@NotEmpty
+	@Column(name = "local_evento")
 	private String localEvento;
 
 	@NotEmpty
+	@Column(name = "data_evento")
 	private String dataEvento;
 
 	@NotEmpty
+	@Column(name = "horario_evento")
 	private String horarioEvento;
 
 	// necessario adicionar essa notacao, caso
-	// contrario na hora de deleter um evento
+	// contrario na hora de deletar um evento
 	// havera um erro por causa das constraints
 	@OneToMany(mappedBy="evento", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Convidado> convidados;
@@ -87,6 +93,5 @@ public class Evento implements Serializable {
 	public void setConvidados(List<Convidado> convidados) {
 		this.convidados = convidados;
 	}
-	
 	
 }

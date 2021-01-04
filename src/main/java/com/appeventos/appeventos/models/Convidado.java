@@ -2,6 +2,7 @@ package com.appeventos.appeventos.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,12 +19,15 @@ public class Convidado implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "codigo_convidado")
 	private long codigoConvidado;
 	
 	@NotEmpty
+	@Column(name = "cpf_convidado")
 	private String cpfConvidado;
 	
 	@NotEmpty
+	@Column(name = "nome_convidado")
 	private String nomeConvidado;
 	
 	// muitos convidados

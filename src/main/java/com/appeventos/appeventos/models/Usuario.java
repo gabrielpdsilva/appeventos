@@ -2,6 +2,7 @@ package com.appeventos.appeventos.models;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -15,12 +16,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Usuario implements UserDetails {
 
 	@Id
+	@Column(name = "login")
 	private String login;
 	
 	@NotEmpty
+	@Column(name = "nome_usuario")
 	private String nomeUsuario;
 	
 	@NotEmpty
+	@Column(name = "senha")
 	private String senha;
 
 	public String getLogin() {
