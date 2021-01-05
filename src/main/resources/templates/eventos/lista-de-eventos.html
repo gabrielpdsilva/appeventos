@@ -24,27 +24,33 @@
 	    </div>
 	  </nav>
 	</header>
-	<table class="container">
 	
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Local</th>
-				<th>Data</th>
-				<th>Horario</th>
-				<th>Deletar</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="evento : ${eventos}">
-				<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigoEvento)).build()}"><span th:text="${evento.nomeEvento}"></span></a></td>
-				<td><span th:text="${evento.localEvento}"></span></td>
-				<td><span th:text="${evento.dataEvento}"></span></td>
-				<td><span th:text="${evento.horarioEvento}"></span></td>
-				<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigoEvento)).build()}"><i class="material-icons left">delete</i></a></td>
-			</tr>
-		</tbody>
-	</table>
+	<!-- se existem eventos, mostrar a tabela toda -->
+	<div th:if="!${#lists.isEmpty(eventos)}">
+		<table class="container">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Local</th>
+					<th>Data</th>
+					<th>Horario</th>
+					<th>Deletar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="evento : ${eventos}">
+					<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigoEvento)).build()}"><span th:text="${evento.nomeEvento}"></span></a></td>
+					<td><span th:text="${evento.localEvento}"></span></td>
+					<td><span th:text="${evento.dataEvento}"></span></td>
+					<td><span th:text="${evento.horarioEvento}"></span></td>
+					<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigoEvento)).build()}"><i class="material-icons left">delete</i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:unless="!${#lists.isEmpty(eventos)}">
+		<span class="erro">Nenhum evento cadastrado.</span>
+	</div>
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
