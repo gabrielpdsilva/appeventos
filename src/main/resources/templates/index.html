@@ -17,6 +17,11 @@
 	    <div class="nav-wrapper">
 	      <a href="." class="brand-logo tituloNav">APPEVENTOS</a>
 	      
+	      <!-- botao de logout so aparecera se usuario estiver logado -->
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="botaoLogout"><i class="material-icons left">logout</i>Sair</a></li>
+	      </ul>
+	    
 	    </div>
 	  </nav>
 	</header>
@@ -27,5 +32,11 @@
 		<a href="/lista-de-eventos" class="estiloBotao btn"><i class="material-icons left">list</i>Listar Eventos</a>
 		<a href="/cadastrar-novo-usuario" class="estiloBotao btn"><i class="material-icons left">add</i>Cadastrar usuario</a>
 	</div>
+	
+	<ul>
+	  <li sec:authorize="isAuthenticated()">Usuario atual: <span sec:authentication="name"></span></li>
+	  
+	  
+	</ul>
 </body>
 </html>

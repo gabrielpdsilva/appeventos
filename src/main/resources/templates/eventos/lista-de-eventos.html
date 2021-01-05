@@ -19,7 +19,7 @@
 	      <a href="." class="brand-logo tituloNav">Lista de Eventos</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
 	        <li><a href="/cadastrar-novo-evento" class="estiloBotao btn"><i class="material-icons left">add</i>Cadastrar evento</a></li>
-	      	<li><a th:href="@{/logout}" class="estiloBotao btn"><i class="material-icons left">logout</i>Sair</a></li>
+	      	<li><a th:href="@{/logout}" class="botaoLogout"><i class="material-icons left">logout</i>Sair</a></li>
 	      </ul>
 	    </div>
 	  </nav>
@@ -51,6 +51,12 @@
 	<div th:unless="!${#lists.isEmpty(eventos)}">
 		<span class="erro">Nenhum evento cadastrado.</span>
 	</div>
+	
+	<ul>
+	  <li sec:authorize="isAuthenticated()"><a class="nav-link" href="/logout">Logout</a></li>
+	  <li sec:authorize="isAuthenticated()">Wellcome, <span sec:authentication="name"></span></li>
+	</ul>
+	
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
