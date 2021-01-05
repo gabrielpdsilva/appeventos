@@ -19,16 +19,17 @@
 		    <div class="nav-wrapper">
 		      <a href="." class="brand-logo tituloNav">Cadastrar Usuario</a>
 		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="/lista-de-eventos" class="estiloBotao btn"><i class="material-icons left">list</i>Listar eventos</a></li>
-		      	<li><a th:href="@{/logout}" class="botaoLogout"><i class="material-icons left">logout</i>Sair</a></li>
+		        <li><a th:href="@{/logout}" class="botaoLogout"><i class="material-icons left">logout</i>Sair</a></li>
 		      </ul>
 		    </div>
 		  </nav>
 		</header>
+		
+		<p class="infoUsuario" sec:authorize="isAuthenticated()">Usuario atual: <span sec:authentication="name"></span></p>
 	
 		<div class="container formEvento">
 		
-		<th:block th:include="mensagemValidacao"></th:block>
+			<th:block th:include="mensagemValidacao"></th:block>
 		
 			<form class="container" method="post">
 			

@@ -36,6 +36,12 @@
 	margin-bottom: 60px;
 }
 
+.infoUsuario {
+	margin-left: 50px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
 .mensagemDeValidacao {
 	text-align: center;
 }

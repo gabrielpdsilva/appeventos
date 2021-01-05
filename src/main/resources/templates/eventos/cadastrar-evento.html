@@ -25,6 +25,9 @@
 		    </div>
 		  </nav>
 		</header>
+
+		<p class="infoUsuario" sec:authorize="isAuthenticated()">Usuario atual: <span sec:authentication="name"></span></p>
+		
 		<th:block th:include="mensagemValidacao"></th:block>
 	
 		<div class="container formEvento">
