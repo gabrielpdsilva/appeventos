@@ -49,10 +49,8 @@ public class UsuarioController {
 	@RequestMapping("/lista-de-usuarios")
 	public ModelAndView listarUsuarios() {
 		
-		// passamos qual pagina ele vai renderizar de acordo com os dados do evento
 		ModelAndView mv = new ModelAndView("usuarios/lista-de-usuarios");
 		
-		// lista de eventos
 		Iterable<Usuario> usuarios = ur.findAll();
 		
 		// passando pra view. O primeiro parametro

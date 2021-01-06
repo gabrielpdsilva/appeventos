@@ -37,6 +37,8 @@
 			<tr th:each="usuario : ${usuarios}">
 	
 				<!-- TODO -->
+				<td><span th:text="${usuario.login}"></span></td>
+				<td><span th:text="${usuario.nomeUsuario}"></span></td>
 				<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('UC#deletarUsuario').arg(0, usuario.login)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
 		</tbody>
