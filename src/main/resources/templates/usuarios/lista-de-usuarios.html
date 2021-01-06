@@ -42,8 +42,12 @@
 				<td><span th:text="${usuario.nomeUsuario}"></span></td>
 				
 				<td>
-        			<span th:each="role : ${usuario.roles}">
-        				<span th:text="${role.nomeRole}"/>
+        			<span th:each="role, iterStat : ${usuario.roles}">
+        			
+	        			<!-- iterStat vai ser o responsavel por separar  
+        				por virgulas se tiver maisde um role -->
+        				
+        				<span th:text="${role.nomeRole}"/> <th:block th:if="${!iterStat.last}">,</th:block>
         			</span>    		
    				</td>
     
