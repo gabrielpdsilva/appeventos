@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.appeventos.appeventos.models.Evento;
 import com.appeventos.appeventos.models.Usuario;
 import com.appeventos.appeventos.repository.IUsuarioRepository;
 
@@ -21,7 +23,7 @@ public class UsuarioController {
 	
 	@RequestMapping(value="/cadastrar-novo-usuario", method=RequestMethod.GET)
 	public String formUsuario() {
-		return "/cadastrar-usuario";
+		return "usuarios/cadastrar-usuario";
 	}
 	
 	@RequestMapping(value="/cadastrar-novo-usuario", method=RequestMethod.POST)
@@ -42,6 +44,29 @@ public class UsuarioController {
 		ur.save(usuario);
 		attributes.addFlashAttribute("mensagem", "Usuario adicionado!");
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/lista-de-usuarios")
+	public ModelAndView listarUsuarios() {
+		
+		// passamos qual pagina ele vai renderizar de acordo com os dados do evento
+		ModelAndView mv = new ModelAndView("usuarios/lista-de-usuarios");
+		
+		// lista de eventos
+		Iterable<Usuario> usuarios = ur.findAll();
+		
+		// passando pra view. O primeiro parametro
+		// eh aquele definido na view, ${}		
+		mv.addObject("usuarios", usuarios);
+		
+		return mv;
+	}
+	
+	@RequestMapping("/deletarUsuario")
+	public String deletarUsuario(String login) {
+		Usuario usuario = ur.findByLogin(login);
+		ur.delete(usuario);
+		return "redirect:/lista-de-usuarios";
 	}
 
 }
