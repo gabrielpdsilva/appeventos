@@ -39,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// sites uteis:
 		// https://www.baeldung.com/spring-security-login
 		// https://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#simple-conditionals-if-and-unless
+		// https://juhahinkula.github.io/2016-07-16-crudboot-manytomany/
 	}
 
 	@Override
