@@ -22,6 +22,10 @@
   	color: red;
 }
 
+.paginaCentralizada {
+	text-align: center;
+}
+
 .tabelaConvidado {
 	width: 50%;
 }
