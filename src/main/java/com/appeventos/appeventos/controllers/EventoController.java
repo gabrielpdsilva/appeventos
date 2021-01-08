@@ -84,25 +84,4 @@ public class EventoController {
 		return "redirect:/lista-de-eventos";
 	}
 	
-
-	@RequestMapping(value="/{codigo}", method=RequestMethod.POST) //retorna o codigo de cada evento
-	public String detalhesEventoPost(@PathVariable("codigo") long codigo, @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
-		
-		// validando dados lancados
-		// pelo usuario
-		if(result.hasErrors()) {
-			// importante: o primeiro atributo, chamado 'mensagem',
-			// é o que será passado na mensagemValida.html
-			attributes.addFlashAttribute("mensagem", "Verifique os campos.");
-			return "redirect:/{codigo}";
-		}
-			
-		Evento evento = er.findByCodigoEvento(codigo);
-		convidado.setEvento(evento);
-		cr.save(convidado);
-		attributes.addFlashAttribute("mensagem", "Convidado adicionado!");
-		return "redirect:/{codigo}";	
-		
-	}
-	
 }
