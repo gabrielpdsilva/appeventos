@@ -37,7 +37,6 @@
 		<tbody>
 			<tr th:each="usuario : ${usuarios}">
 	
-				<!-- TODO -->
 				<td><span th:text="${usuario.login}"></span></td>
 				<td><span th:text="${usuario.nomeUsuario}"></span></td>
 				
@@ -47,8 +46,16 @@
 	        			<!-- iterStat vai ser o responsavel por separar  
         				por virgulas se tiver mais de um role -->
         				
-        				<span th:text="${role.nomeRole}"/> <th:block th:if="${!iterStat.last}">,</th:block>
-        			</span>    		
+        				<div th:if="!${#lists.isEmpty(usuario.roles)}">
+        					<span th:text="${role.nomeRole}"/>
+        						<th:block th:if="${!iterStat.last}">,</th:block>
+        					</span>  
+       					</div>
+       					
+	       				<div th:unless="!${#lists.isEmpty(usuario.roles)}">
+	       					<span>Nenhum ROLE definido</span>
+	       				</div>
+       				</span>
    				</td>
     
 				<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('UC#deletarUsuario').arg(0, usuario.login)).build()}"><i class="material-icons left">delete</i></a></td>
