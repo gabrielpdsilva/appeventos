@@ -48,22 +48,30 @@
 		</form>
 	</div>
 	
-	<table class="container tabelaConvidado">
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>CPF</th>
-				<th>Deletar</th>
-			</tr>	
-		</thead>
-		<tbody>
-			<tr th:each="convidado: ${convidados}">
-				<td><span th:text="${convidado.nomeConvidado}"></span></td>
-				<td><span th:text="${convidado.cpfConvidado}"></span></td>
-				<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('CC#deletarConvidado').arg(0, convidado.codigoConvidado)).build()}"><i class="material-icons left">delete</i></a></td>
-			</tr>
-		</tbody>
-	</table>
+	<div th:if="!${#lists.isEmpty(convidados)}">
+	
+		<table class="container tabelaConvidado">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Deletar</th>
+				</tr>	
+			</thead>
+			<tbody>
+				<tr th:each="convidado: ${convidados}">
+					<td><span th:text="${convidado.nomeConvidado}"></span></td>
+					<td><span th:text="${convidado.cpfConvidado}"></span></td>
+					<td><a class="estiloBotao btn-small" th:href="${(#mvc.url('CC#deletarConvidado').arg(0, convidado.codigoConvidado)).build()}"><i class="material-icons left">delete</i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+	
+	<div class="paginaCentralizada" th:unless="!${#lists.isEmpty(convidados)}">
+		<span class="erro">Nenhum convidado cadastrado.</span>
+	</div>
 	
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
